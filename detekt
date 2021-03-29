@@ -2,7 +2,7 @@
 
 set -e
 
-ROOT_FOLDER=build/bin
+ROOT_FOLDER=Memorizelic/build/bin
 VERSION=1.13.0
 DETEKT_BIN=$ROOT_FOLDER/detekt-$VERSION
 mkdir -p $ROOT_FOLDER
