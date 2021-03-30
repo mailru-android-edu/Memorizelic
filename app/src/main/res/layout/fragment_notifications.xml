@@ -8,11 +8,22 @@
 
     <TextView
             android:id="@+id/text_notifications"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+            android:id="@+id/text_authorization"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingStart="20dp"
-            android:paddingTop="30dp"
-            android:paddingBottom="50dp"
+            android:paddingTop="35dp"
+            android:paddingBottom="45dp"
             android:textSize="40sp"
             android:text="@string/authorization"
             android:background="@color/purple_500"
@@ -41,7 +52,7 @@
             android:id="@+id/account_username"
             android:paddingBottom="10sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/text_notifications"
+            app:layout_constraintTop_toBottomOf="@id/text_authorization"
             android:text="@string/username"
             android:paddingStart="10dp"
             android:textSize="25sp"
@@ -53,7 +64,7 @@
             android:id="@+id/account_real_username"
             android:paddingBottom="10sp"
             app:layout_constraintStart_toEndOf="@id/account_username"
-            app:layout_constraintTop_toBottomOf="@id/text_notifications"
+            app:layout_constraintTop_toBottomOf="@id/text_authorization"
             android:text="My name"
             android:paddingStart="15dp"
             android:textSize="25sp"
