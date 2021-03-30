@@ -1,22 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.notifications.NotificationsFragment">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.notifications.NotificationsFragment">
 
     <TextView
-        android:id="@+id/text_notifications"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            android:id="@+id/text_notifications"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="20dp"
+            android:paddingTop="30dp"
+            android:paddingBottom="50dp"
+            android:textSize="40sp"
+            android:text="@string/authorization"
+            android:background="@color/purple_500"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toStartOf="@id/account_username"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="RtlSymmetry" />
+
+    <ImageView
+            android:id="@+id/account_image"
+            android:layout_width="76dp"
+            android:layout_height="75dp"
+            android:src="@drawable/baseline_face_black_48"
+            android:layout_marginStart="100dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="26dp"
+            app:layout_constraintHorizontal_bias="0.931"
+            android:contentDescription="Account image" />
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/account_username"
+            android:paddingBottom="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_notifications"
+            android:text="@string/username"
+            android:paddingStart="10dp"
+            android:textSize="25sp"
+            tools:ignore="RtlSymmetry" />
+
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/account_real_username"
+            android:paddingBottom="10sp"
+            app:layout_constraintStart_toEndOf="@id/account_username"
+            app:layout_constraintTop_toBottomOf="@id/text_notifications"
+            android:text="My name"
+            android:paddingStart="15dp"
+            android:textSize="25sp"
+            tools:ignore="RtlSymmetry"
+            app:layout_constraintBottom_toTopOf="@+id/account_real_email"
+            android:inputType="text"
+            android:autofillHints="My name"
+            android:layout_marginBottom="5dp" />
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/account_email"
+            android:paddingBottom="10sp"
+            app:layout_constraintTop_toBottomOf="@id/account_username"
+            android:text="@string/email"
+            android:paddingStart="10dp"
+            android:textSize="25sp"
+            tools:ignore="MissingConstraints,RtlSymmetry" />
+
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/account_real_email"
+            android:paddingBottom="10sp"
+            android:layout_marginBottom="15sp"
+            app:layout_constraintTop_toBottomOf="@id/account_username"
+            app:layout_constraintStart_toEndOf="@id/account_email"
+            app:layout_constraintBottom_toTopOf="@id/account_achievements"
+            android:text="example@example.com"
+            android:paddingStart="10dp"
+            android:textSize="25sp"
+            tools:ignore="MissingConstraints,RtlSymmetry"
+            android:inputType="text" />
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/account_achievements"
+            app:layout_constraintTop_toBottomOf="@id/account_email"
+            android:text="@string/achievements"
+            android:paddingStart="10dp"
+            android:textSize="25sp"
+            tools:ignore="MissingConstraints,RtlSymmetry" />
+
+    <Button
+            android:id="@+id/button_delete_account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginBottom="60dp"
+            android:layout_marginRight="100dp"
+            android:layout_marginLeft="100dp"
+            android:background="@drawable/edit_round"
+            android:text="@string/delete_account"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="8"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

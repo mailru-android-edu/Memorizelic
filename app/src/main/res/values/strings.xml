@@ -3,4 +3,9 @@
     <string name="title_home">Deck</string>
     <string name="title_dashboard">Text</string>
     <string name="title_notifications">Auth</string>
+    <string name="authorization">Authorization</string>
+    <string name="username">Username:</string>
+    <string name="email">Email:</string>
+    <string name="achievements">Achievements:</string>
+    <string name="delete_account">Delete account</string>
 </resources>
