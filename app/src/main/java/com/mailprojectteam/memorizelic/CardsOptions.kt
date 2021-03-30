@@ -35,15 +35,9 @@ class CardsOptions : AppCompatActivity(){
             val intent = Intent(this@CardsOptions, CardPage::class.java)
             startActivity(intent)
         }
-
-
         /*spinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
             override fun onItemSelected(parent:AdapterView<*>, view: View, position: Int, id: Long){
                 textForSpinner.text = "Spinner selected : ${parent.getItemAtPosition(position).toString()}"
             }*/
-
-
-
-
     }
 }

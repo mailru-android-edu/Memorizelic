@@ -31,10 +31,9 @@ class HomeFragment : Fragment() {
         val startSettingsButton: Button = root.findViewById(R.id.button_start_deck);
 
         startSettingsButton.setOnClickListener {
-            val intent = Intent(requireContext(),CardsOptions::class.java)
+            val intent = Intent(requireContext(), CardsOptions::class.java)
             startActivity(intent)
         }
-        
         return root
     }
 }
