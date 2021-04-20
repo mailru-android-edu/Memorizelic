@@ -1,14 +1,15 @@
 package com.mailprojectteam.memorizelic
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import android.widget.AdapterView
+import android.view.LayoutInflater
 import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.Spinner
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
 
 class CardsOptions : AppCompatActivity(){
 
@@ -35,9 +36,16 @@ class CardsOptions : AppCompatActivity(){
             val intent = Intent(this@CardsOptions, CardPage::class.java)
             startActivity(intent)
         }
+
+        val startDialog: Button = findViewById(R.id.start_dialog)
+        startDialog.setOnClickListener {
+            MyCustomDialog().show(supportFragmentManager, "Write down your word")
+        }
+
         /*spinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
             override fun onItemSelected(parent:AdapterView<*>, view: View, position: Int, id: Long){
                 textForSpinner.text = "Spinner selected : ${parent.getItemAtPosition(position).toString()}"
             }*/
     }
+
 }

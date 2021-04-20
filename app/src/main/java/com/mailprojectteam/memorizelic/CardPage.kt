@@ -1,9 +1,6 @@
 package com.mailprojectteam.memorizelic
-
-import android.os.Bundle
-import android.widget.ArrayAdapter
-import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
 
 class CardPage : AppCompatActivity() {
 

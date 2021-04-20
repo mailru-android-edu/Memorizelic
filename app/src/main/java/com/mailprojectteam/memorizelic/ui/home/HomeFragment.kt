@@ -9,10 +9,17 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.mailprojectteam.memorizelic.CardsOptions
 import com.mailprojectteam.memorizelic.R
 
 class HomeFragment : Fragment() {
+
+    private val decks = generateDecksList().toMutableList()
+
+    var adapter: CardsAdapter? = null
 
     private lateinit var homeViewModel: HomeViewModel
 
@@ -21,19 +28,50 @@ class HomeFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        homeViewModel =
-                ViewModelProvider(this).get(HomeViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_home, container, false)
-        val textView: TextView = root.findViewById(R.id.text_home)
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
-        val startSettingsButton: Button = root.findViewById(R.id.button_start_deck);
-
-        startSettingsButton.setOnClickListener {
-            val intent = Intent(requireContext(), CardsOptions::class.java)
-            startActivity(intent)
-        }
+        val rvDeckList: RecyclerView = root.findViewById(R.id.hello_activity__rv_deck_list)
+        adapter = CardsAdapter(decks)
+        rvDeckList.adapter = adapter
+        rvDeckList.layoutManager = LinearLayoutManager(context)
+        val button: FloatingActionButton = root.findViewById(R.id.hello_activity__fab_add_movie)
+        button.setOnClickListener { onClick() }
         return root
     }
+
+    private fun onClick() {
+        decks.add(
+            Deck(
+                "My new deck",
+                0
+            )
+        )
+        adapter?.notifyDataSetChanged()
+    }
+}
+
+private fun generateDecksList(): List<Deck> {
+    return listOf(
+        Deck(
+            "Literature",
+            10
+        ), Deck(
+            "Philosophy",
+            10
+        ), Deck(
+            "Food",
+            10
+        ), Deck(
+            "Clothes",
+            10
+        ), Deck(
+            "Parts of the body",
+            10
+        ), Deck(
+            "Animals",
+            10
+        ), Deck(
+            "Family",
+            10
+        )
+    )
 }
