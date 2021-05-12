@@ -49,6 +49,7 @@ class CardsAdapter(private val decks: List<Deck>) :
         init {
             itemView.setOnClickListener {
                 val intent = Intent(itemView.context, CardsOptions::class.java)
+                intent.putExtra("wordAmount", itemView.findViewById<TextView>(R.id.deck_item__tv_description).text.toString().substringAfter(":"))
                 startActivity(itemView.context, intent, null)
             }
         }
@@ -57,7 +58,7 @@ class CardsAdapter(private val decks: List<Deck>) :
 
         fun bind(deck: Deck) {
             tvName.text = deck.title
-            tvAmount.text = "Number of cards: " + deck.amountOfCards.toString()
+            tvAmount.text = itemView.context.getString(R.string.cards_amount) + deck.amountOfCards.toString()
         }
 
     }

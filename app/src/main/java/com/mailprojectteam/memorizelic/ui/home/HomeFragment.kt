@@ -41,7 +41,7 @@ class HomeFragment : Fragment() {
     private fun onClick() {
         decks.add(
             Deck(
-                "My new deck",
+               requireActivity().getString(R.string.new_deck) ,
                 0
             )
         )

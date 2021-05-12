@@ -12,7 +12,7 @@
             android:id="@+id/hello_activity__rv_deck_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#B8CAF8"
+            android:background="@color/for_deck_fragment"
             app:layout_constraintBottom_toTopOf="@+id/hello_activity__fab_add_movie"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

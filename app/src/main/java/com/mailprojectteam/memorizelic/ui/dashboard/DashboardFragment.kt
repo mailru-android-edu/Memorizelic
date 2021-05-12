@@ -40,7 +40,7 @@ override fun onCreateView(
     private fun onClick() {
         text.add(
                 Text(
-                        "My new text",
+                        requireActivity().getString(R.string.new_text) ,
                         0
                 )
         )

@@ -1,5 +1,6 @@
 package com.mailprojectteam.memorizelic.ui.dashboard
 
+import android.provider.Settings.Global.getString
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -47,7 +48,7 @@ class TextAdapter(private val texts: List<Text>) :
 
         fun bind(text: Text) {
             tvName.text = text.title
-            tvAmount.text = "Amount of words: " + text.wordsAmount.toString()
+            tvAmount.text =  itemView.context.getString(R.string.words_amount) + text.wordsAmount.toString()
         }
 
     }
