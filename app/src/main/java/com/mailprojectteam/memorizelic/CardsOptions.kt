@@ -1,45 +1,33 @@
 package com.mailprojectteam.memorizelic
 
-import android.content.Context
-import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.util.Log
-import android.view.LayoutInflater
 import android.widget.*
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.google.gson.GsonBuilder
-import com.google.gson.JsonObject
-import com.mailprojectteam.memorizelic.ui.RetrofitServices
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import com.mailprojectteam.memorizelic.ui.home.Deck
 import okhttp3.*
-import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import okhttp3.RequestBody.Companion.toRequestBody
-import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
-import ru.gildor.coroutines.retrofit.awaitResponse
-import java.io.IOException
 
-const val BASE_URL = "https://google-translate1.p.rapidapi.com/language/translate/"
+const val BASE_URL =  "https://google-translate1.p.rapidapi.com/"
 
-class CardsOptions : AppCompatActivity(){
+class CardsOptions : AppCompatActivity(), Comunicator{
 
-    var word: String = ""
     var jsonResults: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         setContentView(R.layout.cards_options)
+        val deck = intent.getSerializableExtra("deck") as Deck
 
-        var wordAmount: Int = intent.getStringExtra("wordAmount").toInt()
+        val fragmentDeck = FragmentDeck()
+        val bundle = Bundle()
+        bundle.putSerializable("deck", deck)
+        fragmentDeck.arguments = bundle
+
+        val trasactionDeck = supportFragmentManager
+                .beginTransaction().replace(R.id.fragment_container, fragmentDeck)
+                .commit()
+
 
         var checkLang: Boolean = true
 
@@ -56,7 +44,7 @@ class CardsOptions : AppCompatActivity(){
 
         spinner.adapter = adapter*/
 
-        val startSettingsButton: Button = findViewById(R.id.button_start_test);
+        /*val startSettingsButton: Button = findViewById(R.id.button_start_test);
 
         startSettingsButton.setOnClickListener {
             val intent = Intent(this@CardsOptions, CardPage::class.java)
@@ -115,6 +103,7 @@ class CardsOptions : AppCompatActivity(){
                 }
 
                 val client = OkHttpClient.Builder()
+                        .addNetworkInterceptor(logging)
                         .build()
 
                 val gson = GsonBuilder()
@@ -126,8 +115,10 @@ class CardsOptions : AppCompatActivity(){
                         .addConverterFactory(GsonConverterFactory.create(gson))
                         .build()
                         .create(RetrofitServices::class.java)
+
                 GlobalScope.launch(Dispatchers.IO) {
                     try {
+
                         val response = retrofit.getTranslate().awaitResponse()
                         if (response.isSuccessful) {
 
@@ -150,7 +141,7 @@ class CardsOptions : AppCompatActivity(){
                     }
                 }
 
-                /*val test = Get()
+                *//*val test = Get()
                     test.run(word, checkDiaLanguage, this,
                             object : Callback {
 
@@ -173,13 +164,13 @@ class CardsOptions : AppCompatActivity(){
                                         ).show()
                                     }
                                 }
-                            })*/
+                            })*//*
                 }
 
                 mBuilder.setNegativeButton("Cancel") { dialog, _ ->
                     dialog.dismiss()
                 }
-                val mAlertDialog = mBuilder.show()
+                val mAlertDialog = mBuilder.show()*/
 
                 /*val width = (resources.displayMetrics.widthPixels * 0.85).toInt()
             val height = (resources.displayMetrics.heightPixels * 0.40).toInt()
@@ -190,8 +181,8 @@ class CardsOptions : AppCompatActivity(){
                     this,
                     edittext.hint,
                     Toast.LENGTH_SHORT
-            ).show()*/
-            }
+            ).show()
+            }*/
 
             /*spinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
             override fun onItemSelected(parent:AdapterView<*>, view: View, position: Int, id: Long){
@@ -200,7 +191,7 @@ class CardsOptions : AppCompatActivity(){
         }
 
 
-        class Get {
+        /*class Get {
             @Throws(IOException::class)
             fun run(word: String?, checkLang: Boolean, context: Context, callback: Callback) {
                 Thread {
@@ -226,11 +217,27 @@ class CardsOptions : AppCompatActivity(){
                     client.newCall(request).enqueue(callback)
                 }.start()
             }
+
+            }*/
             //context.getString(R.string.key_rapidAPI
 //                println(response)
 //                val response =
 //                Toast.makeText(context, response.toString(), Toast.LENGTH_SHORT).show()
 //                val sResponse: String = response.body!!.toString()
 
-        }
+
+
+    override fun passDataToNewFragment(deck: Deck, numberInList: Int, arrayList: ArrayList<String>) {
+        val bundle = Bundle()
+        bundle.putSerializable("deck", deck)
+        bundle.putInt("numberInList", numberInList)
+        bundle.putStringArrayList("list", arrayList)
+
+        val transaction = this.supportFragmentManager.beginTransaction()
+        val fragmentCard = FragmentCard()
+        fragmentCard.arguments = bundle
+
+        transaction.replace(R.id.fragment_container, fragmentCard).commit()
     }
+}
+

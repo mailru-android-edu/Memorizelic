@@ -14,7 +14,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.mailprojectteam.memorizelic.R
 import com.mailprojectteam.memorizelic.ui.home.HomeViewModel
 
-class DashboardFragment : Fragment() {
+class DashboardFragment : Fragment(), TextAdapter.Listener {
         private val text = generateTextList().toMutableList()
 
         var adapter: TextAdapter? = null
@@ -29,7 +29,7 @@ override fun onCreateView(
 ): View? {
     val root = inflater.inflate(R.layout.fragment_dashboard, container, false)
     val rvDeckList: RecyclerView = root.findViewById(R.id.hello_activity__rv_deck_list)
-    adapter = TextAdapter(text)
+    adapter = TextAdapter(text, this)
     rvDeckList.adapter = adapter
     rvDeckList.layoutManager = LinearLayoutManager(context)
     val button: FloatingActionButton = root.findViewById(R.id.hello_activity__fab_add_movie)
@@ -45,6 +45,10 @@ override fun onCreateView(
                 )
         )
         adapter?.notifyDataSetChanged()
+    }
+
+    override fun onTextClicked(text: Text) {
+        TODO("Not yet implemented")
     }
 }
 

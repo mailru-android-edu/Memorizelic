@@ -10,4 +10,6 @@
     <string name="words_amount">Amount of words:</string>
     <string name="new_text">My new text</string>
     <string name="key_rapidAPI">09b7bf987emshf956815a19e422fp184e3djsn3d317e876483</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

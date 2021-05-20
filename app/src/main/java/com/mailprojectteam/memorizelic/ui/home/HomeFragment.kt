@@ -1,18 +1,12 @@
 package com.mailprojectteam.memorizelic.ui.home
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.mailprojectteam.memorizelic.CardsOptions
 import com.mailprojectteam.memorizelic.R
 
 class HomeFragment : Fragment() {
@@ -42,7 +36,8 @@ class HomeFragment : Fragment() {
         decks.add(
             Deck(
                requireActivity().getString(R.string.new_deck) ,
-                0
+                0,
+                    null
             )
         )
         adapter?.notifyDataSetChanged()
@@ -53,25 +48,32 @@ private fun generateDecksList(): List<Deck> {
     return listOf(
         Deck(
             "Literature",
-            10
+            10,
+                null
         ), Deck(
             "Philosophy",
-            10
+            10,
+            null
         ), Deck(
             "Food",
-            10
+            10,
+            null
         ), Deck(
             "Clothes",
-            10
+            10,
+            null
         ), Deck(
             "Parts of the body",
-            10
+            10,
+            null
         ), Deck(
             "Animals",
-            10
+            10,
+            null
         ), Deck(
             "Family",
-            10
+            10,
+            null
         )
     )
 }
