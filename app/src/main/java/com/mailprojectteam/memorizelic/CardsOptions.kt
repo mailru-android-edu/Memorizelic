@@ -6,10 +6,11 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.mailprojectteam.memorizelic.ui.home.Deck
 import okhttp3.*
+import java.io.Serializable
 
 const val BASE_URL =  "https://google-translate1.p.rapidapi.com/"
 
-class CardsOptions : AppCompatActivity(), Comunicator{
+class CardsOptions : AppCompatActivity(), Comunicator, ComunicatorFinishTest, ComunicatorReturnToDeck{
 
     var jsonResults: String = ""
 
@@ -227,17 +228,43 @@ class CardsOptions : AppCompatActivity(), Comunicator{
 
 
 
-    override fun passDataToNewFragment(deck: Deck, numberInList: Int, arrayList: ArrayList<String>) {
+    override fun passDataToNewFragment(deck: Deck, numberInList: Int, arrayList: ArrayList<String>, langEnToRu: Boolean, arrayBoolean: BooleanArray) {
         val bundle = Bundle()
         bundle.putSerializable("deck", deck)
         bundle.putInt("numberInList", numberInList)
         bundle.putStringArrayList("list", arrayList)
+        bundle.putBoolean("langEnToRu", langEnToRu)
+        bundle.putBooleanArray("arrayBoolean", arrayBoolean)
 
         val transaction = this.supportFragmentManager.beginTransaction()
         val fragmentCard = FragmentCard()
         fragmentCard.arguments = bundle
 
         transaction.replace(R.id.fragment_container, fragmentCard).commit()
+    }
+
+    override fun sendDataToFinishTestFragment(deck: Deck, arrayBoolean: BooleanArray) {
+        val bundle = Bundle()
+        bundle.putSerializable("deck", deck)
+        bundle.putBooleanArray("arrayBoolean", arrayBoolean)
+
+        val transaction = this.supportFragmentManager.beginTransaction()
+        val fragmentFinishTest = FragmentFinishTest()
+        fragmentFinishTest.arguments = bundle
+
+        transaction.replace(R.id.fragment_container, fragmentFinishTest).commit()
+    }
+
+    override fun sendDataToDeckFragment(deck: Deck) {
+        val fragmentDeck = FragmentDeck()
+        val bundle = Bundle()
+        bundle.putSerializable("deck", deck)
+        fragmentDeck.arguments = bundle
+
+        val trasactionDeck = supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.fragment_container, fragmentDeck)
+                .commit()
     }
 }
 

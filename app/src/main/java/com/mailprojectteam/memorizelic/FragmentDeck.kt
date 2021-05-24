@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.appcompat.widget.AppCompatButton
 import com.mailprojectteam.memorizelic.ui.home.Deck
 
 
@@ -48,7 +49,7 @@ class FragmentDeck() : Fragment() {
             }
         }
 
-val startDialog: Button = view.findViewById(R.id.start_dialog)
+val startDialog: AppCompatButton = view.findViewById(R.id.start_dialog)
 startDialog.setOnClickListener {
 
 
@@ -90,7 +91,10 @@ startDialog.setOnClickListener {
                 .findViewById<Button>(R.id.button_start_test)
                 .setOnClickListener{
                     if (deck != null) {
-                        comunicator.passDataToNewFragment(deck, 1, ArrayList<String>(deck.getamount()))
+                        comunicator.passDataToNewFragment(deck, 1,
+                            ArrayList<String>(deck.getamount()), checkLang,
+                            BooleanArray(deck.getamount())
+                        )
                     }
                 }
 

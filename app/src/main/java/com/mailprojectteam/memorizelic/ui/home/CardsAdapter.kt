@@ -51,7 +51,7 @@ class CardsAdapter(private val decks: List<Deck>) :
 
         fun bind(deck: Deck) {
             tvName.text = deck.title
-            tvAmount.text = itemView.context.getString(R.string.cards_amount) + deck.amountOfCards.toString()
+            tvAmount.text = itemView.context.getString(R.string.cards_amount) + deck.getamount().toString()
         }
 
     }

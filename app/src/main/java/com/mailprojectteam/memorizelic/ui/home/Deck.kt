@@ -3,15 +3,14 @@ package com.mailprojectteam.memorizelic.ui.home
 import android.os.Parcelable
 import java.io.Serializable
 
-data class Deck(val title: String, var amountOfCards: Int, val list: ArrayList<WordAndTranslate>?) : Serializable{
+data class Deck(val title: String, val list: ArrayList<WordAndTranslate>?) : Serializable{
 
     private fun add(element: WordAndTranslate) {
-        amountOfCards++
         list!!.add(element)
     }
 
     fun getamount(): Int {
-        return amountOfCards
+        return list!!.size
     }
 
     fun gettitle(): String {

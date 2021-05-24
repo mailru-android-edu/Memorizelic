@@ -36,8 +36,7 @@ class HomeFragment : Fragment() {
         decks.add(
             Deck(
                requireActivity().getString(R.string.new_deck) ,
-                0,
-                    null
+                    ArrayList()
             )
         )
         adapter?.notifyDataSetChanged()
@@ -48,32 +47,39 @@ private fun generateDecksList(): List<Deck> {
     return listOf(
         Deck(
             "Literature",
-            10,
-                null
+                arrayListOf(WordAndTranslate("run", "бежать"),
+                        WordAndTranslate("word", "слово"),
+                        WordAndTranslate("two", "два"))
         ), Deck(
             "Philosophy",
-            10,
-            null
-        ), Deck(
+            arrayListOf(WordAndTranslate("run", "бежать"),
+                    WordAndTranslate("word", "слово"),
+                    WordAndTranslate("two", "два"))
+    ), Deck(
             "Food",
-            10,
-            null
-        ), Deck(
+            arrayListOf(WordAndTranslate("run", "бежать"),
+                    WordAndTranslate("word", "слово"),
+                    WordAndTranslate("two", "два"))
+    ), Deck(
             "Clothes",
-            10,
-            null
+            arrayListOf(WordAndTranslate("run", "бежать"),
+                    WordAndTranslate("word", "слово"),
+                    WordAndTranslate("two", "два"))
         ), Deck(
             "Parts of the body",
-            10,
-            null
+            arrayListOf(WordAndTranslate("run", "бежать"),
+                    WordAndTranslate("word", "слово"),
+                    WordAndTranslate("two", "два"))
         ), Deck(
             "Animals",
-            10,
-            null
+            arrayListOf(WordAndTranslate("run", "бежать"),
+                    WordAndTranslate("word", "слово"),
+                    WordAndTranslate("two", "два"))
         ), Deck(
             "Family",
-            10,
-            null
+            arrayListOf(WordAndTranslate("run", "бежать"),
+                    WordAndTranslate("word", "слово"),
+                    WordAndTranslate("two", "два"))
         )
     )
 }

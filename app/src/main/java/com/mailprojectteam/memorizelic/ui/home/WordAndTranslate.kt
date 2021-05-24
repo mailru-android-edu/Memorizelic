@@ -1,6 +1,8 @@
 package com.mailprojectteam.memorizelic.ui.home
 
-class WordAndTranslate {
+import java.io.Serializable
+
+class WordAndTranslate : Serializable {
 
     private var enWord: String
     private var ruWord: String
@@ -10,19 +12,19 @@ class WordAndTranslate {
         this.ruWord = ruWord
     }
 
-    private fun setRu(newWord: String){
+    fun setRu(newWord: String){
         ruWord = newWord
     }
 
-    private fun setEn(newWord: String){
+    fun setEn(newWord: String){
         enWord = newWord
     }
 
-    private fun getRu(): String {
+    fun getRu(): String {
         return ruWord
     }
 
-    private fun getEn(): String {
+    fun getEn(): String {
         return enWord
     }
 
