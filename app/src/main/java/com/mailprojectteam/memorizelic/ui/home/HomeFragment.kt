@@ -35,6 +35,7 @@ class HomeFragment : Fragment() {
     private fun onClick() {
         decks.add(
             Deck(
+                    100,
                requireActivity().getString(R.string.new_deck) ,
                     ArrayList()
             )
@@ -46,36 +47,43 @@ class HomeFragment : Fragment() {
 private fun generateDecksList(): List<Deck> {
     return listOf(
         Deck(
+                1,
             "Literature",
                 arrayListOf(WordAndTranslate("run", "бежать"),
                         WordAndTranslate("word", "слово"),
                         WordAndTranslate("two", "два"))
         ), Deck(
+            2,
             "Philosophy",
             arrayListOf(WordAndTranslate("run", "бежать"),
                     WordAndTranslate("word", "слово"),
                     WordAndTranslate("two", "два"))
     ), Deck(
+            3,
             "Food",
             arrayListOf(WordAndTranslate("run", "бежать"),
                     WordAndTranslate("word", "слово"),
                     WordAndTranslate("two", "два"))
     ), Deck(
+            4,
             "Clothes",
             arrayListOf(WordAndTranslate("run", "бежать"),
                     WordAndTranslate("word", "слово"),
                     WordAndTranslate("two", "два"))
         ), Deck(
+            5,
             "Parts of the body",
             arrayListOf(WordAndTranslate("run", "бежать"),
                     WordAndTranslate("word", "слово"),
                     WordAndTranslate("two", "два"))
         ), Deck(
+            6,
             "Animals",
             arrayListOf(WordAndTranslate("run", "бежать"),
                     WordAndTranslate("word", "слово"),
                     WordAndTranslate("two", "два"))
         ), Deck(
+            7,
             "Family",
             arrayListOf(WordAndTranslate("run", "бежать"),
                     WordAndTranslate("word", "слово"),

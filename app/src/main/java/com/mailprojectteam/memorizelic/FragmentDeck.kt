@@ -2,13 +2,22 @@ package com.mailprojectteam.memorizelic
 
 import android.app.AlertDialog
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.widget.AppCompatButton
+import com.google.mlkit.common.model.DownloadConditions
+import com.google.mlkit.common.model.RemoteModelManager
+import com.google.mlkit.nl.translate.TranslateLanguage
+import com.google.mlkit.nl.translate.TranslateRemoteModel
+import com.google.mlkit.nl.translate.Translation
+import com.google.mlkit.nl.translate.TranslatorOptions
 import com.mailprojectteam.memorizelic.ui.home.Deck
+import com.mailprojectteam.memorizelic.ui.home.WordAndTranslate
+import java.lang.Exception
 
 
 class FragmentDeck() : Fragment() {
@@ -49,6 +58,8 @@ class FragmentDeck() : Fragment() {
             }
         }
 
+
+
 val startDialog: AppCompatButton = view.findViewById(R.id.start_dialog)
 startDialog.setOnClickListener {
 
@@ -77,6 +88,51 @@ startDialog.setOnClickListener {
         .setTitle("Add your word")
     mBuilder.setPositiveButton("Ok") { _, _ ->
         word = mDialogView.findViewById<EditText>(R.id.word_edittext).text.toString()
+
+        val optionsBuilder = TranslatorOptions.Builder()
+        if (checkDiaLanguage){
+            optionsBuilder
+                    .setSourceLanguage(TranslateLanguage.ENGLISH)
+                    .setTargetLanguage(TranslateLanguage.RUSSIAN)
+        } else{
+            optionsBuilder
+                    .setSourceLanguage(TranslateLanguage.RUSSIAN)
+                    .setTargetLanguage(TranslateLanguage.ENGLISH)
+        }
+        val options = optionsBuilder.build()
+        val englishToRussianTranslator = Translation.getClient(options)
+
+
+        var conditions = DownloadConditions.Builder()
+                .requireWifi()
+                .build()
+        englishToRussianTranslator.downloadModelIfNeeded(conditions)
+                .addOnSuccessListener {
+                    Toast.makeText(view.context, "Wait file to download", Toast.LENGTH_SHORT).show()
+                }
+                .addOnFailureListener { exception: Exception ->
+                    Toast.makeText(view.context, "Some problem happend\ntry again", Toast.LENGTH_SHORT).show()
+                }
+
+        englishToRussianTranslator.translate(word)
+                .addOnSuccessListener { translatedText ->
+                    if (word.equals(translatedText)) {
+                        Toast.makeText(view.context, "Can not translate", Toast.LENGTH_SHORT).show()
+                    }
+                    else {
+                        Toast.makeText(view.context, translatedText, Toast.LENGTH_SHORT).show()
+                        if (checkDiaLanguage)
+                            deck?.add(WordAndTranslate(word, translatedText))
+                        else
+                            deck?.add(WordAndTranslate(translatedText, word))
+                        wordsAmo.setText(deck?.getamount().toString())
+                        Log.i("Translate", translatedText)
+                    }
+                }
+                .addOnFailureListener { exception: Exception  ->
+                    // Error.
+                    // ...
+                }
     }
 
     mBuilder.setNegativeButton("Cancel") { dialog, _ ->

@@ -2,11 +2,8 @@ package com.mailprojectteam.memorizelic
 
 import android.content.pm.ActivityInfo
 import android.os.Bundle
-import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.mailprojectteam.memorizelic.ui.home.Deck
-import okhttp3.*
-import java.io.Serializable
 
 const val BASE_URL =  "https://google-translate1.p.rapidapi.com/"
 
@@ -28,9 +25,6 @@ class CardsOptions : AppCompatActivity(), Comunicator, ComunicatorFinishTest, Co
         val trasactionDeck = supportFragmentManager
                 .beginTransaction().replace(R.id.fragment_container, fragmentDeck)
                 .commit()
-
-
-        var checkLang: Boolean = true
 
 //        val languages = arrayOf("English","Russian")
 
@@ -191,7 +185,6 @@ class CardsOptions : AppCompatActivity(), Comunicator, ComunicatorFinishTest, Co
             }*/
         }
 
-
         /*class Get {
             @Throws(IOException::class)
             fun run(word: String?, checkLang: Boolean, context: Context, callback: Callback) {
@@ -228,13 +221,13 @@ class CardsOptions : AppCompatActivity(), Comunicator, ComunicatorFinishTest, Co
 
 
 
-    override fun passDataToNewFragment(deck: Deck, numberInList: Int, arrayList: ArrayList<String>, langEnToRu: Boolean, arrayBoolean: BooleanArray) {
+    override fun passDataToNewFragment(deck: Deck, numberInList: Int, arrayList: ArrayList<String>, langEnToRu: Boolean, arrayAnswers: BooleanArray) {
         val bundle = Bundle()
         bundle.putSerializable("deck", deck)
         bundle.putInt("numberInList", numberInList)
         bundle.putStringArrayList("list", arrayList)
         bundle.putBoolean("langEnToRu", langEnToRu)
-        bundle.putBooleanArray("arrayBoolean", arrayBoolean)
+        bundle.putBooleanArray("arrayBoolean", arrayAnswers)
 
         val transaction = this.supportFragmentManager.beginTransaction()
         val fragmentCard = FragmentCard()
@@ -243,10 +236,10 @@ class CardsOptions : AppCompatActivity(), Comunicator, ComunicatorFinishTest, Co
         transaction.replace(R.id.fragment_container, fragmentCard).commit()
     }
 
-    override fun sendDataToFinishTestFragment(deck: Deck, arrayBoolean: BooleanArray) {
+    override fun sendDataToFinishTestFragment(deck: Deck, listOfAnswers: BooleanArray) {
         val bundle = Bundle()
         bundle.putSerializable("deck", deck)
-        bundle.putBooleanArray("arrayBoolean", arrayBoolean)
+        bundle.putBooleanArray("arrayBoolean", listOfAnswers)
 
         val transaction = this.supportFragmentManager.beginTransaction()
         val fragmentFinishTest = FragmentFinishTest()

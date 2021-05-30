@@ -11,9 +11,4 @@
         android:icon="@android:drawable/stat_notify_chat"
         android:title="@string/title_dashboard" />
 
-    <item
-        android:id="@+id/navigation_notifications"
-        android:icon="@drawable/ic_account_circle_black_18dp"
-        android:title="@string/title_notifications" />
-
 </menu>
