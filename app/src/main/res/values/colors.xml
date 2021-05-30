@@ -6,6 +6,7 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
+    <color name="for_text_fragment">#F1C4F0</color>
+    <color name="for_deck_fragment">#B8CAF8</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="my_spinner_text_color">#FF6200EE</color>
 </resources>

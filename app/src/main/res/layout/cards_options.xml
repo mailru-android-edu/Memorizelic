@@ -2,98 +2,16 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginRight="70dp"
-        android:layout_marginLeft="70dp"
-        android:layout_marginTop="150dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <LinearLayout
-        android:id="@+id/linlay_cards_amount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="40dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner">
-
-
-        <TextView
+    <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="28dp"
-            android:text="Last statistic:"
-            android:textColor="@color/purple_500"/>
+            android:layout_height="match_parent"
+            android:id="@+id/fragment_container"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
 
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=" 9 from 10"
-            android:textSize="28dp"
-            android:textColor="@color/purple_500"/>
-
-
-    </LinearLayout>
-
-<LinearLayout
-    android:id="@+id/linlay_statistic"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:layout_marginTop="40dp"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/linlay_cards_amount">
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="28dp"
-        android:text="Cards amount:"
-        android:textColor="@color/purple_500"/>
-
-
-    <EditText
-        android:id="@+id/text_statistic"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="numberDecimal"
-        android:paddingLeft="20dp"
-        android:maxEms="2"
-        android:ems="2"
-        android:textSize="28dp"
-        android:textColor="@color/purple_500"/>
-
-
-</LinearLayout>
-
-
-
-    <Button
-        android:id="@+id/button_start_test"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="40dp"
-        android:layout_marginRight="60dp"
-        android:layout_marginLeft="60dp"
-        android:background="@drawable/edit_round"
-        android:text="Start"
-        android:textSize="26dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linlay_statistic" />
 </androidx.constraintlayout.widget.ConstraintLayout>
