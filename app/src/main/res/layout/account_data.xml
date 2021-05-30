@@ -7,7 +7,7 @@
         tools:context=".ui.notifications.NotificationsFragment">
 
     <TextView
-            android:id="@+id/text_notifications"
+            android:id="@+id/text_notifications_account_data"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -18,23 +18,23 @@
             app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-            android:id="@+id/text_authorization"
+            android:id="@+id/text_account"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingStart="20dp"
             android:paddingTop="35dp"
             android:paddingBottom="45dp"
             android:textSize="40sp"
-            android:text="Authorization"
+            android:text="Account"
             android:background="@color/purple_500"
             android:textColor="@color/white"
-            app:layout_constraintEnd_toStartOf="@id/account_username"
+            app:layout_constraintEnd_toStartOf="@id/account_data_username"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="RtlSymmetry" />
 
     <ImageView
-            android:id="@+id/account_image"
+            android:id="@+id/account_data_image"
             android:layout_width="76dp"
             android:layout_height="75dp"
             android:src="@drawable/ic_face_white_48dp"
@@ -49,29 +49,26 @@
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/account_username"
+            android:id="@+id/account_data_username"
             android:paddingBottom="10sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/text_authorization"
+            app:layout_constraintTop_toBottomOf="@id/text_account"
             android:text="Username:"
             android:paddingStart="10dp"
             android:textSize="25sp"
             tools:ignore="RtlSymmetry" />
 
-    <EditText
+    <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/account_real_username"
+            android:id="@+id/account_data_real_username"
             android:paddingBottom="5sp"
-            app:layout_constraintStart_toEndOf="@id/account_username"
-            app:layout_constraintTop_toBottomOf="@id/text_authorization"
-            android:hint="My name"
+            app:layout_constraintStart_toEndOf="@id/account_data_username"
+            app:layout_constraintTop_toBottomOf="@id/text_account"
             android:paddingStart="15dp"
             android:textSize="25sp"
             tools:ignore="RtlSymmetry"
             app:layout_constraintBottom_toTopOf="@+id/account_real_email"
-            android:inputType="text"
-            android:autofillHints="My name"
             android:layout_marginBottom="5dp" />
 
     <TextView
@@ -79,22 +76,21 @@
             android:layout_height="wrap_content"
             android:id="@+id/account_email"
             android:paddingBottom="10sp"
-            app:layout_constraintTop_toBottomOf="@id/account_username"
+            app:layout_constraintTop_toBottomOf="@id/account_data_username"
             android:text="Email:"
             android:paddingStart="10dp"
             android:textSize="25sp"
             tools:ignore="MissingConstraints,RtlSymmetry" />
 
-    <EditText
+    <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/account_real_email"
             android:paddingBottom="5sp"
-            android:layout_marginBottom="15sp"
-            app:layout_constraintTop_toBottomOf="@id/account_username"
+            android:layout_marginBottom="5sp"
+            app:layout_constraintTop_toBottomOf="@id/account_data_username"
             app:layout_constraintStart_toEndOf="@id/account_email"
             app:layout_constraintBottom_toTopOf="@id/account_password"
-            android:hint="example@example.com"
             android:paddingStart="10dp"
             android:textSize="25sp"
             tools:ignore="MissingConstraints,RtlSymmetry"
@@ -110,22 +106,20 @@
             android:textSize="25sp"
             tools:ignore="MissingConstraints,RtlSymmetry" />
 
-    <EditText
+    <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/account_real_password"
-            android:paddingBottom="5sp"
-            app:layout_constraintTop_toBottomOf="@id/account_real_email"
+            app:layout_constraintTop_toBottomOf="@id/account_email"
             app:layout_constraintStart_toEndOf="@id/account_password"
             app:layout_constraintBottom_toBottomOf="@id/account_password"
-            android:hint="My password"
             android:paddingStart="10dp"
             android:textSize="25sp"
             tools:ignore="MissingConstraints,RtlSymmetry"
-            android:inputType="textPassword" />
+            android:inputType="text" />
 
     <Button
-            android:id="@+id/button_sign_in"
+            android:id="@+id/button_log_out"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
@@ -133,9 +127,11 @@
             android:layout_marginRight="100dp"
             android:layout_marginLeft="100dp"
             android:background="@drawable/edit_round"
-            android:text="Sign in"
+            android:text="Log out"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="8"
             app:layout_constraintBottom_toBottomOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
