@@ -104,20 +104,20 @@ startDialog.setOnClickListener {
 
 
         var conditions = DownloadConditions.Builder()
-                .requireWifi()
+//                .requireWifi()
                 .build()
         englishToRussianTranslator.downloadModelIfNeeded(conditions)
                 .addOnSuccessListener {
                     Toast.makeText(view.context, "Wait file to download", Toast.LENGTH_SHORT).show()
                 }
                 .addOnFailureListener { exception: Exception ->
-                    Toast.makeText(view.context, "Some problem happend\ntry again", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(view.context, "Could not download", Toast.LENGTH_SHORT).show()
                 }
 
         englishToRussianTranslator.translate(word)
                 .addOnSuccessListener { translatedText ->
                     if (word.equals(translatedText)) {
-                        Toast.makeText(view.context, "Can not translate", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(view.context, "Not right language", Toast.LENGTH_SHORT).show()
                     }
                     else {
                         Toast.makeText(view.context, translatedText, Toast.LENGTH_SHORT).show()
@@ -130,8 +130,8 @@ startDialog.setOnClickListener {
                     }
                 }
                 .addOnFailureListener { exception: Exception  ->
-                    // Error.
-                    // ...
+                    Log.e("Error", exception.toString())
+                    Toast.makeText(view.context, "Some problem happened", Toast.LENGTH_SHORT).show()
                 }
     }
 
@@ -141,19 +141,18 @@ startDialog.setOnClickListener {
     val mAlertDialog = mBuilder.show()
 }
 
-
-
         view
                 .findViewById<Button>(R.id.button_start_test)
                 .setOnClickListener{
                     if (deck != null) {
-                        comunicator.passDataToNewFragment(deck, 1,
-                            ArrayList<String>(deck.getamount()), checkLang,
-                            BooleanArray(deck.getamount())
-                        )
+                        if (deck.getamount() > 0){
+                            comunicator.passDataToNewFragment(deck, 1,
+                                    ArrayList<String>(deck.getamount()), checkLang,
+                                    BooleanArray(deck.getamount())
+                            )
+                        }
                     }
                 }
-
         return view
     }
 }

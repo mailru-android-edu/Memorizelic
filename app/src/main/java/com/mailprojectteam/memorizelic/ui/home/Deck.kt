@@ -1,9 +1,8 @@
 package com.mailprojectteam.memorizelic.ui.home
 
-import android.os.Parcelable
 import java.io.Serializable
 
-data class Deck(val id: Int, val title: String, val list: ArrayList<WordAndTranslate>?) : Serializable{
+data class Deck (var title: String, val list: ArrayList<WordAndTranslate>?) : Serializable{
 
     fun add(element: WordAndTranslate) {
         list!!.add(element)
@@ -13,9 +12,19 @@ data class Deck(val id: Int, val title: String, val list: ArrayList<WordAndTrans
         return list!!.size
     }
 
-    fun getamid(): Int {
+    /*fun getamid(): Int {
         return id
+    }*/
+
+    @JvmName("setTitle1")
+    fun setTitle(title: String){
+        this.title = title
     }
+
+    /*@JvmName("setId1")
+    fun setId(id: Int){
+        this.id = id
+    }*/
 
     fun gettitle(): String {
         return title

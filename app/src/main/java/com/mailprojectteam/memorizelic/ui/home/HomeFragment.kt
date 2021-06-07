@@ -15,8 +15,6 @@ class HomeFragment : Fragment() {
 
     var adapter: CardsAdapter? = null
 
-    private lateinit var homeViewModel: HomeViewModel
-
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
@@ -35,7 +33,6 @@ class HomeFragment : Fragment() {
     private fun onClick() {
         decks.add(
             Deck(
-                    100,
                requireActivity().getString(R.string.new_deck) ,
                     ArrayList()
             )
@@ -47,47 +44,44 @@ class HomeFragment : Fragment() {
 private fun generateDecksList(): List<Deck> {
     return listOf(
         Deck(
-                1,
-            "Literature",
-                arrayListOf(WordAndTranslate("run", "бежать"),
-                        WordAndTranslate("word", "слово"),
-                        WordAndTranslate("two", "два"))
+            "Сhristmas",
+                arrayListOf(WordAndTranslate("elf", "эльф"))
         ), Deck(
-            2,
-            "Philosophy",
-            arrayListOf(WordAndTranslate("run", "бежать"),
-                    WordAndTranslate("word", "слово"),
-                    WordAndTranslate("two", "два"))
+//            2,
+            "Weather",
+            arrayListOf(WordAndTranslate("rainy", "дождливо"),
+                    WordAndTranslate("sunny", "солнечно"))
     ), Deck(
-            3,
+//            3,
             "Food",
-            arrayListOf(WordAndTranslate("run", "бежать"),
-                    WordAndTranslate("word", "слово"),
-                    WordAndTranslate("two", "два"))
+            arrayListOf(WordAndTranslate("egg", "яйцо"),
+                    WordAndTranslate("apple", "яблоко"),
+                    WordAndTranslate("milk", "молоко"),
+                    WordAndTranslate("bread", "хлеб"),
+                    WordAndTranslate("rice", "рис"),
+                    WordAndTranslate("fish", "рыба"))
     ), Deck(
-            4,
+//            4,
             "Clothes",
-            arrayListOf(WordAndTranslate("run", "бежать"),
-                    WordAndTranslate("word", "слово"),
-                    WordAndTranslate("two", "два"))
+            arrayListOf(WordAndTranslate("hat", "шляпа"),
+                    WordAndTranslate("shoes", "обувь"),
+                    WordAndTranslate("dress", "платье"),
+                    WordAndTranslate("socks", "носки"))
         ), Deck(
-            5,
+//            5,
             "Parts of the body",
-            arrayListOf(WordAndTranslate("run", "бежать"),
-                    WordAndTranslate("word", "слово"),
-                    WordAndTranslate("two", "два"))
+            arrayListOf(WordAndTranslate("shoulder", "плечо"))
         ), Deck(
-            6,
+//            6,
             "Animals",
-            arrayListOf(WordAndTranslate("run", "бежать"),
-                    WordAndTranslate("word", "слово"),
-                    WordAndTranslate("two", "два"))
+            arrayListOf(WordAndTranslate("cat", "кошка"),
+                    WordAndTranslate("elephant", "слон"),
+                    WordAndTranslate("camel", "верблюд"))
         ), Deck(
-            7,
+//            7,
             "Family",
-            arrayListOf(WordAndTranslate("run", "бежать"),
-                    WordAndTranslate("word", "слово"),
-                    WordAndTranslate("two", "два"))
+            arrayListOf(WordAndTranslate("sister", "сестра"),
+                    WordAndTranslate("brother", "брат"))
         )
     )
 }
